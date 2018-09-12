@@ -12,13 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView listView ;
+    private TextView textView_float;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         /*ShareDesc.Builder builder = new ShareDesc.Builder();
         ShareDesc shareDesc = builder.build();*/
         listView =  findViewById(R.id.listView);
+        textView_float = findViewById(R.id.textView_float);
 
         final List<String> list = initArrayList();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -50,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 return list.size();
             }
         });
+        initEvent();
+    }
+
+    //初始化点击事件
+    private void initEvent() {
+        textView_float.setOnClickListener(this);
     }
 
     private List<String> initArrayList() {
@@ -58,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
             list.add("周吴郑王" + i) ;
         }
         return list;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.textView_float:
+                Toast.makeText(this,"点击",Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 
     class Holder extends RecyclerView.ViewHolder{
