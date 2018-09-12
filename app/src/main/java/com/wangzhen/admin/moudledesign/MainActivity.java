@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.textView_float:
                 Toast.makeText(this,"点击",Toast.LENGTH_SHORT).show();
+                Log.i("MDL","世界美好");
                 break;
         }
     }
